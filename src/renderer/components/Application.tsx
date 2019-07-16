@@ -5,7 +5,7 @@ import CounterContainer from '../containers/CounterContainer';
 
 const Application = () => (
     <div>
-        Hello World from Electron!
+        {/* Hello World from Electron! */}
         <CounterContainer />
     </div>
 );

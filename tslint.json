@@ -1,7 +1,9 @@
 {
     "defaultSeverity": "error",
+    "object-literal-sort-keys": false,
     "extends": [
         "tslint-config-airbnb",
+        "tslint:recommended",
         "tslint-react",
         "tslint-config-prettier"
     ],

@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "VPet";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../resources/pixelmix.ttf") format('ttf');
+    // src: url("../resources/vpet.woff") format('woff');
+  }
+
+  .terminal{
+    color: white;
+    background-color: #255325;
+    // font-size: 14px;
+    height: 30px;
+    font-family:"VPet" ;
+
+  }

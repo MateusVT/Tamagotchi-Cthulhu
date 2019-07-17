@@ -1,0 +1,42 @@
+{
+    "users": [
+        {
+            "name": "Mateus T.",
+            "login": "mvtorres",
+            "password": "123",
+            "pets": [
+                {
+                    "pet": {
+                        "name": "baby",
+                        "status": "normal",
+                        "happines": 100,
+                        "starvation": 100,
+                        "health": 100,
+                        "bored": 200,
+                        "dirty": 300,
+                        "age": 200
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Wesley V.",
+            "login": "wesleysk",
+            "password": "123",
+            "pets": [
+                {
+                    "pet": {
+                        "name": "baby",
+                        "status": "normal",
+                        "happines": 100,
+                        "starvation": 100,
+                        "health": 100,
+                        "bored": 200,
+                        "dirty": 300,
+                        "age": 200
+                    }
+                }
+            ]
+        }
+    ]
+}

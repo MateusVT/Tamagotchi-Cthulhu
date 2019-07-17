@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore, Store } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { rootReducer, RootState } from '../reducers';
 
 const configureStore = (initialState?: RootState): Store<RootState | undefined> => {

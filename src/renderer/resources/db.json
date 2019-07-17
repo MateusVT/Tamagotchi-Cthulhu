@@ -15,6 +15,26 @@
                         "bored": 200,
                         "dirty": 300,
                         "age": 200
+                    },
+                    "pet": {
+                        "name": "dragon",
+                        "status": "normal",
+                        "happines": 100,
+                        "starvation": 100,
+                        "health": 100,
+                        "bored": 200,
+                        "dirty": 300,
+                        "age": 200
+                    },
+                    "pet": {
+                        "name": "lord",
+                        "status": "normal",
+                        "happines": 100,
+                        "starvation": 100,
+                        "health": 100,
+                        "bored": 200,
+                        "dirty": 300,
+                        "age": 200
                     }
                 }
             ]

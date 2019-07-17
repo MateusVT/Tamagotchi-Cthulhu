@@ -38,15 +38,17 @@ type Props = {
 type State = {
 	screen: screen
 	user: string
-	password: string
+	password: string,
+	userData: user | null
 }
 const con = require('electron').remote.getGlobal('console')
 
 class Login extends React.PureComponent<Props, State> {
 	state: State = {
-		screen: "home",
+		screen: "login",
 		user: "",
-		password: ""
+		password: "",
+		userData: null,
 	}
 
 
@@ -56,11 +58,12 @@ class Login extends React.PureComponent<Props, State> {
 			con.log(db.users[i].login)
 			con.log(user)
 			if (db.users[i].login === user && db.users[i].password === password) {
-				con.log("Entrei Login")
-				con.log(db.users[i].login)
-				this.setState({
-					screen: "home"
-				})
+				if (db.users[i]) {
+					this.setState({
+						screen: "home",
+						userData: db.users[i]
+					})
+				}
 			}
 		}
 	}
@@ -80,10 +83,10 @@ class Login extends React.PureComponent<Props, State> {
 
 
 	render() {
-		const { screen } = this.state
+		const { screen, userData } = this.state
 		return (<>
 
-			{screen == "home" && <Home />}
+			{screen == "home" && <Home user={userData} />}
 			{screen == "login" && (<div className="wrap">
 				<div className="avatar">
 					<img src={icon} />

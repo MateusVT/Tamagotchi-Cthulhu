@@ -1,7 +1,9 @@
 import * as React from "react"
 import Home from "./Home";
+import { status } from "./Pet";
 require('./Login.scss')
 const icon = require('../resources/loginIcon.jpg');
+const background = require('../resources/login.png');
 const db: dbTypes = require('../resources/db.json');
 export type screen = "login" | "home";
 
@@ -21,7 +23,8 @@ export type user = {
 export type pet = {
 
 	name: string,
-	status: string,
+	status: status,
+	energy: number,
 	happines: number,
 	starvation: number,
 	health: number,
@@ -55,8 +58,6 @@ class Login extends React.PureComponent<Props, State> {
 	verifyLogin = () => {
 		const { user, password } = this.state
 		for (var i = 0; i < db.users.length; i++) {
-			con.log(db.users[i].login)
-			con.log(user)
 			if (db.users[i].login === user && db.users[i].password === password) {
 				if (db.users[i]) {
 					this.setState({

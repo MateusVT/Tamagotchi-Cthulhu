@@ -19,7 +19,8 @@ export interface Props {
 
 const Counter: React.FunctionComponent<Props> = ({ }) => (
 
-    <div  style={{border:"solid 2px black"}} className="centerHV">
+    // <div  style={{border:"solid 2px black"}} className="centerHV">
+    <div  className="centerHV">
         <Login />
     </div>
 );

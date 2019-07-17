@@ -5811,9 +5811,11 @@ const createWindow = async () => {
   }
 
   win = new electron__WEBPACK_IMPORTED_MODULE_0__["BrowserWindow"]({
-    width: 800,
-    height: 600,
-    resizable: false
+    width: 160,
+    height: 470,
+    resizable: false,
+    center: true,
+    title: "Cthulhu Virtual Pet"
   });
 
   if (true) {

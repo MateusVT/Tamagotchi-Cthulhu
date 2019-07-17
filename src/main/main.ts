@@ -19,7 +19,7 @@ const createWindow = async () => {
         await installExtensions();
     }
 
-    win = new BrowserWindow({ width: 800, height: 600, resizable: false });
+    win = new BrowserWindow({ width: 250, height: 470, resizable: false, center: true, title:"Cthulhu Virtual Pet" });
 
     if (process.env.NODE_ENV !== 'production') {
         process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';

@@ -38,7 +38,7 @@ class Home extends React.PureComponent<Props, State> {
                 {/* {this.renderActions} */}
                 {screen == "actions" && this.renderActions}
                 {screen == "pets" && this.renderPets}
-                {screen == "playing" && (<Pet />)}
+                {(screen == "playing") && user  && (<Pet pet={user.pets[0]} />)}
 
             </div>
         </>)

@@ -1,5 +1,6 @@
 import * as React from "react"
 import { ButtonGroup, Button, Label, Alert, Progress } from "reactstrap";
+import { pet } from "./Login";
 require('./Pet.scss')
 const ballon = require('../resources/ballon.jpg');
 const normal = require('../resources/default.gif');
@@ -19,8 +20,12 @@ const con = require('electron').remote.getGlobal('console')
 export type status = "normal" | "dirty" | "eating" | "guilty" | "happy" | "bored" | "mad" | "sleeping" | "dead" | "sad" | "washing" | "hungry" | "sick"
 
 
-type Props = {}
+type Props = {
+
+    pet: pet
+}
 type State = {
+    displayStatus: status,
     status: status,
     error: string | null,
     energy: number,
@@ -50,9 +55,19 @@ class Pet extends React.PureComponent<Props, State> {
 
 
     state: State = {
+        displayStatus: "normal",
         status: "normal",
         error: null,
         statusQuote: "Hi Master! ~",
+        // name: this.props.pet.name,
+        // status: this.props.pet.status,
+        // energy: this.props.pet.energy,
+        // health: this.props.pet.health,
+        // happiness: this.props.pet.happines,
+        // starvation: this.props.pet.starvation,
+        // bored: this.props.pet.bored,
+        // dirty: this.props.pet.dirty,
+        // age: this.props.pet.age
         name: "Cthulhu",
         energy: 100,
         health: 100,
@@ -64,16 +79,35 @@ class Pet extends React.PureComponent<Props, State> {
     }
 
     componentDidMount() {
-        setInterval(() => {
-            const { status, energy } = this.state
-            // if(status != "dead"){
-            this.setState({ energy: energy + 2 <= 99 ? energy + 2 : 100 })
-            this.core(1000)
+        const { pet } = this.props
+        con.log("---------------------pet-------------------")
+        con.log(pet)
+        this.setState({
+            // name: pet.name as string,
+            // status: pet.status,
+            // energy: pet.energy,
+            // health: pet.health,
+            // happiness: pet.happines,
+            // starvation: pet.starvation,
+            // bored: pet.bored,
+            // dirty: pet.dirty,
+            // age: pet.age
+        }, () => {
+            con.log(this.state)
+            setInterval(() => {
+                const { status, energy } = this.state
+                // if(status != "dead"){
+                this.setState({ energy: energy + 2 <= 99 ? energy + 2 : 100 })
+                this.core(1000)
+                this.updateStatus();
+                // }
+                // con.log(this.state)
+            }, 1000)
 
-            this.updateStatus();
-            // }
-            // con.log(this.state)
-        }, 1000)
+        }
+        )
+
+
     }
 
     core(deltaTime: number) {
@@ -155,16 +189,53 @@ class Pet extends React.PureComponent<Props, State> {
 
     }
 
+    findMin(obj: any) {
+        var keys = Object.keys(obj);
+        var min = keys[0];
+        for (var i = 1, n = keys.length; i < n; ++i) {
+            var k = keys[i];
+            if (obj[k] < obj[min]) {
+                min = k;
+            }
+        }
+        return min;
+    }
+
+    findMax(obj: any) {
+        var keys = Object.keys(obj);
+        var max = keys[0];
+        for (var i = 1, n = keys.length; i < n; ++i) {
+            var k = keys[i];
+            if (obj[k] > obj[max]) {
+                max = k;
+            }
+        }
+        return max;
+    }
+
     findTheWorstState() {
-        const { happiness, bored, health, starvation } = this.state
-        Math.max(happiness, bored, health, starvation)
+        const { happiness, bored, health, starvation, dirty } = this.state
+        var objMin = {
+            happinessN: happiness, healthN: health
+        };
+
+        var objMax = {
+            happinessN: happiness, boredN: bored, starvationN: starvation, dirtyN: dirty
+        };
+
+
+        // this.setState({
+        //     displayStatus: this.findMax(obj).replace("N", "") as status
+        // })
 
     }
 
 
     updateStatus() {
         const { status, health, starvation, happiness, dirty } = this.state
-        con.log("updateStatus", this.state)
+        // con.log("updateStatus", this.state)
+        this.findTheWorstState()
+
         if (status != 'dead' && status != 'sleeping') {
 
             if (happiness <= 0 || health <= 0 || starvation >= 100) {
@@ -461,7 +532,7 @@ class Pet extends React.PureComponent<Props, State> {
     }
 
     render() {//Som??
-        const { status, statusQuote, age, error } = this.state
+        const { status, statusQuote, age, error, displayStatus } = this.state
         return <>
             <div className="d-flex flex-column">
                 {this.renderHeader()}

@@ -8,33 +8,36 @@
                 {
                     "pet": {
                         "name": "baby",
-                        "status": "normal",
+                        "status": "sleeping",
+                        "energy" : 80,
                         "happines": 100,
-                        "starvation": 100,
+                        "starvation": 21,
                         "health": 100,
-                        "bored": 200,
-                        "dirty": 300,
+                        "bored": 10,
+                        "dirty": 20,
                         "age": 200
                     },
                     "pet": {
                         "name": "dragon",
                         "status": "normal",
                         "happines": 100,
-                        "starvation": 100,
-                        "health": 100,
-                        "bored": 200,
-                        "dirty": 300,
-                        "age": 200
+                        "energy" : 80,
+                        "starvation": 22,
+                        "health": 80,
+                        "bored": 0,
+                        "dirty": 0,
+                        "age": 500
                     },
                     "pet": {
                         "name": "lord",
                         "status": "normal",
                         "happines": 100,
-                        "starvation": 100,
+                        "energy" : 80,
+                        "starvation": 0,
                         "health": 100,
-                        "bored": 200,
-                        "dirty": 300,
-                        "age": 200
+                        "bored": 0,
+                        "dirty": 0,
+                        "age": 320
                     }
                 }
             ]
@@ -50,10 +53,11 @@
                         "status": "normal",
                         "happines": 100,
                         "starvation": 100,
+                        "energy" : 80,
                         "health": 100,
-                        "bored": 200,
-                        "dirty": 300,
-                        "age": 200
+                        "bored": 0,
+                        "dirty": 0,
+                        "age": 250
                     }
                 }
             ]

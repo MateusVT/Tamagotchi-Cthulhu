@@ -19,7 +19,7 @@ const createWindow = async () => {
         await installExtensions();
     }
 
-    win = new BrowserWindow({ width: 250, height: 470, resizable: false, center: true, title:"Cthulhu Virtual Pet" });
+    win = new BrowserWindow({ width: 350, height: 650, resizable: true, title:"Cthulhu Virtual Pet" });
 
     if (process.env.NODE_ENV !== 'production') {
         process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
@@ -37,7 +37,7 @@ const createWindow = async () => {
     if (process.env.NODE_ENV !== 'production') {
         // Open DevTools, see https://github.com/electron/electron/issues/12438 for why we wait for dom-ready
         win.webContents.once('dom-ready', () => {
-            win!.webContents.openDevTools();
+            // win!.webContents.openDevTools();
         });
     }
 

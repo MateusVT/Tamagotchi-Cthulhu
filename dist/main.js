@@ -5811,10 +5811,9 @@ const createWindow = async () => {
   }
 
   win = new electron__WEBPACK_IMPORTED_MODULE_0__["BrowserWindow"]({
-    width: 160,
-    height: 470,
-    resizable: false,
-    center: true,
+    width: 350,
+    height: 650,
+    resizable: true,
     title: "Cthulhu Virtual Pet"
   });
 
@@ -5825,8 +5824,7 @@ const createWindow = async () => {
 
   if (true) {
     // Open DevTools, see https://github.com/electron/electron/issues/12438 for why we wait for dom-ready
-    win.webContents.once('dom-ready', () => {
-      win.webContents.openDevTools();
+    win.webContents.once('dom-ready', () => {// win!.webContents.openDevTools();
     });
   }
 

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ButtonGroup, Button, Label, Alert, Progress } from "reactstrap";
+import { ButtonGroup, Button, Label, Alert, Progress, Input } from "reactstrap";
 import { pet } from "./Login";
 require('./Pet.scss')
 const ballon = require('../resources/ballon.jpg');
@@ -32,6 +32,7 @@ type State = {
     statusQuote: string,
     name: string,
     happiness: number,
+    message: string,
     starvation: number,
     health: number,
     bored: number,
@@ -59,6 +60,7 @@ class Pet extends React.PureComponent<Props, State> {
         status: "normal",
         error: null,
         statusQuote: "Hi Master! ~",
+        message: "",
         // name: this.props.pet.name,
         // status: this.props.pet.status,
         // energy: this.props.pet.energy,
@@ -224,6 +226,8 @@ class Pet extends React.PureComponent<Props, State> {
         };
 
 
+
+
         // this.setState({
         //     displayStatus: this.findMax(obj).replace("N", "") as status
         // })
@@ -232,9 +236,16 @@ class Pet extends React.PureComponent<Props, State> {
 
 
     updateStatus() {
-        const { status, health, starvation, happiness, dirty } = this.state
+        const { status, health, starvation, happiness, dirty, bored } = this.state
         // con.log("updateStatus", this.state)
         this.findTheWorstState()
+
+        // this.setState({
+        //     starvation: starvation < 0 ? 0 : starvation,
+        //     // bored: bored < 0 ? 0 : bored,
+        //     dirty: dirty < 0 ? 0 : dirty
+
+        // })
 
         if (status != 'dead' && status != 'sleeping') {
 
@@ -271,10 +282,10 @@ class Pet extends React.PureComponent<Props, State> {
                     })
                 }
             }
-            else if (status === 'dirty' && dirty < 500) {
+            else if (status === 'dirty' && dirty > 60) {
                 if ((happiness >= 40 && health >= 40 && starvation >= 40)) {
                     this.setState({
-                        status: "normal"
+                        status: "mad"
                     })
                 }
                 else if ((bored >= 60)) {
@@ -298,7 +309,7 @@ class Pet extends React.PureComponent<Props, State> {
                     })
                 }
             }
-            else if (status === 'bored' && bored < 1000) {
+            else if (status === 'bored' && bored > 60) {
                 if ((dirty >= 50)) {
                     this.setState({
                         status: "dirty"
@@ -448,12 +459,14 @@ class Pet extends React.PureComponent<Props, State> {
     Feed = () => {
         const { starvation, happiness, status, energy } = this.state
         if (status !== 'dead' && status !== 'sleeping' && energy >= 20) {
-
             this.setState({
                 energy: energy - 20,
-                starvation: starvation + (20 * Math.random()),
+                statusQuote: "Yummy! I was so hungry",
+                starvation: starvation - (20 * Math.random()),
                 happiness: happiness + (5 * Math.random())
-            })
+            },
+
+            )
         } else if (energy < 20) {
 
             this.setState({
@@ -466,6 +479,7 @@ class Pet extends React.PureComponent<Props, State> {
         const { health, happiness, status, energy } = this.state
         if (status != 'dead' && status != 'sleeping' && energy >= 40) {
             this.setState({
+                statusQuote: "Finally clean ~",
                 energy: energy - 20,
                 health: health + (20 * Math.random()),
                 happiness: happiness - (5 * Math.random()),
@@ -486,6 +500,7 @@ class Pet extends React.PureComponent<Props, State> {
         const { starvation, happiness, status, energy } = this.state
         if (status != 'dead' && status != 'sleeping' && energy >= 60) {
             this.setState({
+                statusQuote: "I love to play ~",
                 energy: energy - 60,
                 happiness: happiness + (10 * Math.random()),//Brincar é divertido!
                 starvation: starvation + (20 * Math.random()),//Gastar energia brincando dá fome!
@@ -495,7 +510,7 @@ class Pet extends React.PureComponent<Props, State> {
         } else if (energy < 60) {
 
             this.setState({
-                error: "Not Enough Energy!"
+                statusQuote: "Not Enough Energy!"
             })
 
         }
@@ -507,6 +522,7 @@ class Pet extends React.PureComponent<Props, State> {
         const { health, status, energy } = this.state
         if (status != 'dead' && status != 'sleeping' && energy >= 40) {
             this.setState({
+                statusQuote: "I felling better ~",
                 energy: energy - 40,
                 health: health + (10 * Math.random()),
             });
@@ -516,7 +532,7 @@ class Pet extends React.PureComponent<Props, State> {
         } else if (energy < 40) {
 
             this.setState({
-                error: "Not Enough Energy!"
+                statusQuote: "Not Enough Energy!"
             })
 
         }
@@ -526,9 +542,16 @@ class Pet extends React.PureComponent<Props, State> {
         const { status } = this.state
         if (status != 'sleeping' && status != 'dead') {
             this.setState({
+                statusQuote: "zZzZzZzZ...",
                 status: "sleeping",
             })
         }
+    }
+
+    handleMessage = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({
+            message: event.target.value
+        })
     }
 
     render() {//Som??
@@ -585,6 +608,11 @@ class Pet extends React.PureComponent<Props, State> {
                         {/* {status == "sleeping" && <Button size="sm" color="secondary" onClick={() => { this.setState({ status: "normal" }) }}>Awake</Button>} */}
                         {/* <Button size="sm" color="secondary" onClick={() => { this.setState({ status: (status == "sleeping" ? "sleeping" : "normal") }) }}>{status == "sleeping" ? "Awake" : "Sleep"}</Button> */}
                         <Button size="sm" color="secondary" onClick={this.Reset}>Reset</Button>
+                    </ButtonGroup>
+
+                    <ButtonGroup>
+                        <Input placeholder="type" onChange={this.handleMessage} />
+                        <Button size="sm" color="success" onClick={this.Reset}>Send</Button>
                     </ButtonGroup>
 
                 </div>

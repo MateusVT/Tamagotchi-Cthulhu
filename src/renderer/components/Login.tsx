@@ -97,7 +97,7 @@ class Login extends React.PureComponent<Props, State> {
 					<i></i>
 				</div>
 				<input type="password" placeholder="password" onChange={this.handlePassword} required={true} />
-				<button onClick={this.verifyLogin}>Entrar</button>
+				<button style={{marginTop:"50px", width:"100px" }} onClick={this.verifyLogin}>Entrar</button>
 			</div>)}
 		</>)
 	}

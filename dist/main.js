@@ -117,7 +117,7 @@ function map_obj(obj, fn){
 /*! exports provided: _args, _from, _id, _inCache, _location, _nodeVersion, _npmOperationalInternal, _npmUser, _npmVersion, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _shrinkwrap, _spec, _where, bin, bugs, dependencies, description, devDependencies, directories, dist, gitHead, homepage, keywords, license, main, maintainers, name, optionalDependencies, readme, repository, scripts, version, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"_args\":[[{\"raw\":\"7zip@0.0.6\",\"scope\":null,\"escapedName\":\"7zip\",\"name\":\"7zip\",\"rawSpec\":\"0.0.6\",\"spec\":\"0.0.6\",\"type\":\"version\"},\"C:\\\\Users\\\\Torres\\\\Desktop\\\\electron-react-typescript\\\\node_modules\\\\electron-devtools-installer\"]],\"_from\":\"7zip@0.0.6\",\"_id\":\"7zip@0.0.6\",\"_inCache\":true,\"_location\":\"/7zip\",\"_nodeVersion\":\"5.11.0\",\"_npmOperationalInternal\":{\"host\":\"packages-12-west.internal.npmjs.com\",\"tmp\":\"tmp/7zip-0.0.6.tgz_1463274735811_0.1922009070403874\"},\"_npmUser\":{\"name\":\"fritx\",\"email\":\"uxfritz@163.com\"},\"_npmVersion\":\"3.8.6\",\"_phantomChildren\":{},\"_requested\":{\"raw\":\"7zip@0.0.6\",\"scope\":null,\"escapedName\":\"7zip\",\"name\":\"7zip\",\"rawSpec\":\"0.0.6\",\"spec\":\"0.0.6\",\"type\":\"version\"},\"_requiredBy\":[\"/electron-devtools-installer\"],\"_resolved\":\"https://registry.npmjs.org/7zip/-/7zip-0.0.6.tgz\",\"_shasum\":\"9cafb171af82329490353b4816f03347aa150a30\",\"_shrinkwrap\":null,\"_spec\":\"7zip@0.0.6\",\"_where\":\"C:\\\\Users\\\\Torres\\\\Desktop\\\\electron-react-typescript\\\\node_modules\\\\electron-devtools-installer\",\"bin\":{\"7z\":\"7zip-lite/7z.exe\"},\"bugs\":{\"url\":\"https://github.com/fritx/win-7zip/issues\"},\"dependencies\":{},\"description\":\"7zip Windows Package via Node.js\",\"devDependencies\":{},\"directories\":{},\"dist\":{\"shasum\":\"9cafb171af82329490353b4816f03347aa150a30\",\"tarball\":\"https://registry.npmjs.org/7zip/-/7zip-0.0.6.tgz\"},\"gitHead\":\"ece5481873f357545c99a9e2f9e1cdb3fe76de2d\",\"homepage\":\"https://github.com/fritx/win-7zip#readme\",\"keywords\":[\"7z\",\"7zip\",\"7-zip\",\"windows\",\"install\"],\"license\":\"GNU LGPL\",\"main\":\"index.js\",\"maintainers\":[{\"name\":\"fritx\",\"email\":\"uxfritz@163.com\"}],\"name\":\"7zip\",\"optionalDependencies\":{},\"readme\":\"ERROR: No README data found!\",\"repository\":{\"type\":\"git\",\"url\":\"git+ssh://git@github.com/fritx/win-7zip.git\"},\"scripts\":{\"test\":\"mocha\"},\"version\":\"0.0.6\"}");
+module.exports = {"_args":[[{"raw":"7zip@0.0.6","scope":null,"escapedName":"7zip","name":"7zip","rawSpec":"0.0.6","spec":"0.0.6","type":"version"},"C:\\Users\\Torres\\Desktop\\electron-react-typescript\\node_modules\\electron-devtools-installer"]],"_from":"7zip@0.0.6","_id":"7zip@0.0.6","_inCache":true,"_location":"/7zip","_nodeVersion":"5.11.0","_npmOperationalInternal":{"host":"packages-12-west.internal.npmjs.com","tmp":"tmp/7zip-0.0.6.tgz_1463274735811_0.1922009070403874"},"_npmUser":{"name":"fritx","email":"uxfritz@163.com"},"_npmVersion":"3.8.6","_phantomChildren":{},"_requested":{"raw":"7zip@0.0.6","scope":null,"escapedName":"7zip","name":"7zip","rawSpec":"0.0.6","spec":"0.0.6","type":"version"},"_requiredBy":["/electron-devtools-installer"],"_resolved":"https://registry.npmjs.org/7zip/-/7zip-0.0.6.tgz","_shasum":"9cafb171af82329490353b4816f03347aa150a30","_shrinkwrap":null,"_spec":"7zip@0.0.6","_where":"C:\\Users\\Torres\\Desktop\\electron-react-typescript\\node_modules\\electron-devtools-installer","bin":{"7z":"7zip-lite/7z.exe"},"bugs":{"url":"https://github.com/fritx/win-7zip/issues"},"dependencies":{},"description":"7zip Windows Package via Node.js","devDependencies":{},"directories":{},"dist":{"shasum":"9cafb171af82329490353b4816f03347aa150a30","tarball":"https://registry.npmjs.org/7zip/-/7zip-0.0.6.tgz"},"gitHead":"ece5481873f357545c99a9e2f9e1cdb3fe76de2d","homepage":"https://github.com/fritx/win-7zip#readme","keywords":["7z","7zip","7-zip","windows","install"],"license":"GNU LGPL","main":"index.js","maintainers":[{"name":"fritx","email":"uxfritz@163.com"}],"name":"7zip","optionalDependencies":{},"readme":"ERROR: No README data found!","repository":{"type":"git","url":"git+ssh://git@github.com/fritx/win-7zip.git"},"scripts":{"test":"mocha"},"version":"0.0.6"};
 
 /***/ }),
 
@@ -2796,11 +2796,9 @@ function slice (args) {
 
 try {
   var util = __webpack_require__(/*! util */ "util");
-  /* istanbul ignore next */
   if (typeof util.inherits !== 'function') throw '';
   module.exports = util.inherits;
 } catch (e) {
-  /* istanbul ignore next */
   module.exports = __webpack_require__(/*! ./inherits_browser.js */ "./node_modules/inherits/inherits_browser.js");
 }
 
@@ -2817,28 +2815,24 @@ try {
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
-    if (superCtor) {
-      ctor.super_ = superCtor
-      ctor.prototype = Object.create(superCtor.prototype, {
-        constructor: {
-          value: ctor,
-          enumerable: false,
-          writable: true,
-          configurable: true
-        }
-      })
-    }
+    ctor.super_ = superCtor
+    ctor.prototype = Object.create(superCtor.prototype, {
+      constructor: {
+        value: ctor,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
   };
 } else {
   // old school shim for old browsers
   module.exports = function inherits(ctor, superCtor) {
-    if (superCtor) {
-      ctor.super_ = superCtor
-      var TempCtor = function () {}
-      TempCtor.prototype = superCtor.prototype
-      ctor.prototype = new TempCtor()
-      ctor.prototype.constructor = ctor
-    }
+    ctor.super_ = superCtor
+    var TempCtor = function () {}
+    TempCtor.prototype = superCtor.prototype
+    ctor.prototype = new TempCtor()
+    ctor.prototype.constructor = ctor
   }
 }
 
